@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Operations: Reverse and Remove Duplicates</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      form {
+        margin: 0 auto;
+        width: 300px;
+      }
+      label,
+      input {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input[type="submit"] {
+        padding: 8px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .output {
+        margin-top: 10px;
+      }
+      .logincal {
+        text-align: center;
+        /* margin-top: 40px; */
+        height: 50%;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Array Operations: Reverse and Remove Duplicates (SET -2 )</h1>
+
+    <!-- Section for Reversing an Array -->
+    <h2>Reverse an Array</h2>
+    <form id="reverseArrayForm">
+      <label for="reverseArrayInput">Enter numbers (comma separated):</label>
+      <input
+        type="text"
+        id="reverseArrayInput"
+        name="reverseArrayInput"
+        required
+      />
+
+      <input type="submit" value="Reverse Array" />
+      <div class="output">
+        <label for="reverseOutput">Output:</label>
+        <input type="text" id="reverseOutput" name="reverseOutput" readonly />
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("reverseArrayForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const arrayInput = document
+            .getElementById("reverseArrayInput")
+            .value.split(",")
+            .map(Number);
+          const reversedArray = arrayInput.reverse();
+          document.getElementById("reverseOutput").value =
+            reversedArray.join(", ");
+        });
+    </script>
+
+    <!-- Section for Removing Duplicates -->
+    <h2>Remove Duplicates from Sorted Array</h2>
+    <form id="removeDuplicatesForm">
+      <label for="sortedArrayInput"
+        >Enter sorted numbers (comma separated):</label
+      >
+      <input
+        type="text"
+        id="sortedArrayInput"
+        name="sortedArrayInput"
+        required
+      />
+
+      <input type="submit" value="Remove Duplicates" />
+      <div class="output">
+        <label for="removeDuplicatesOutput">New Length:</label>
+        <input
+          type="text"
+          id="removeDuplicatesOutput"
+          name="removeDuplicatesOutput"
+          readonly
+        />
+      </div>
+    </form>
+
+    <script>
+      document
+        .getElementById("removeDuplicatesForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const sortedArrayInput = document
+            .getElementById("sortedArrayInput")
+            .value.split(",")
+            .map(Number);
+          const newLength = removeDuplicates(sortedArrayInput);
+          document.getElementById("removeDuplicatesOutput").value = newLength;
+        });
+
+      function removeDuplicates(nums) {
+        if (nums.length === 0) return 0;
+        let j = 0;
+        for (let i = 1; i < nums.length; i++) {
+          if (nums[i] !== nums[j]) {
+            j++;
+            nums[j] = nums[i];
+          }
+        }
+        return j + 1; // Return the new length
+      }
+    </script>
+    <a
+      class="logincal"
+      href="https://rahul-vijaykumar-kulkarni.github.io/Login-based-calculator/"
+      >CLick to access Login Based Login-based-calculator
+      <img class="logincal" src="./images/login cal.png" alt="login cal" />
+    </a>
+  </body>
+</html>
